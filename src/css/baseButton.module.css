@@ -1,0 +1,89 @@
+.button {
+    border: none;
+    border-radius: 3px;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+}
+
+.primary-button {
+    background-color: var(--primary);
+    color: var(--tertiary);
+}
+
+.secondary-button {
+    background-color: var(--secondary);
+    color: var(--secondary-text);
+}
+
+.tertiary-button {
+    background-color: var(--bg);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    box-sizing: border-box;
+}
+
+.danger-button {
+    background-color: var(--danger);
+    color: var(--danger-text);
+}
+
+
+button:active {
+    transform: scale(0.9);
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .button {
+        cursor: pointer;
+    }
+
+    .primary-button:hover {
+        background-color: color-mix(in srgb, var(--primary), white 40%);
+    }
+
+    .secondary-button:hover {
+        background-color: var(--secondary-hover);
+    }
+
+    .tertiary-button:hover {
+        background-color: var(--bg-hover);
+        color: var(--primary-hover);
+        border: 1px solid var(--primary-hover);
+    }
+
+    .danger-button:hover {
+        background-color: var(--danger-hover);
+    }
+}
+
+.primary-button:active {
+    background-color: var(--primary-hover);
+}
+
+.secondary-button:active {
+    background-color: var(--secondary-hover);
+}
+
+.tertiary-button:active {
+    background-color: var(--bg-hover);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+}
+
+.danger-button:active {
+    background-color: var(--danger-hover);
+}

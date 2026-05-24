@@ -1,0 +1,7 @@
+name: custom-player
+services:
+  webapp:
+    build: .
+    ports:
+      - "80:80"
+    restart: unless-stopped

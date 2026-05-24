@@ -1,0 +1,74 @@
+.input-wrapper {
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    transition: var(--transition);
+    display: flex;
+    gap: 5px;
+    position: relative;
+    align-items: center;
+    background-color: var(--input-bg);
+}
+
+.icon{
+    color: var(--transluscent);
+}
+
+.input-wrapper textarea,
+.input-wrapper input{
+    font-size:inherit;
+    font-family: inherit;
+    width: 100%;
+}
+
+.input-field {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    flex-grow: 1;
+    color: var(--primary);
+}
+
+.input-field::placeholder {
+    color: var(--transluscent);
+}
+
+.input-wrapper:hover {
+    background-color: color-mix(in srgb, var(--input-bg), white 10%);;
+}
+
+.input-wrapper:focus-within {
+    outline: none;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 7px var(--primary);
+}
+
+.input-wrapper.error {
+    border: 1px solid var(--danger);
+    box-shadow: 0 0 7px var(--danger);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    /* width: 100%; */
+    /* container-type: inline-size; */
+}
+
+.label{
+    font-size: clamp(0.8rem, 2.5cqw, 1rem);
+    color: var(--primary);
+}
+
+.errorMsg {
+    color: var(--danger);
+    font-size: clamp(0.8rem, 2.5cqw, 1rem);
+    padding: 0 8px;
+}
+
+.password-icon {
+    color: var(--transluscent);
+    font-size: clamp(1rem, 3cqw, 1.2rem);
+}

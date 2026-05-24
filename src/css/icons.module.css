@@ -1,0 +1,33 @@
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.icon-wrapper.interactive {
+  pointer-events: all;
+}
+
+@media (pointer: fine) and (hover: hover) {
+  .icon-wrapper.interactive:hover {
+    cursor: pointer;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
