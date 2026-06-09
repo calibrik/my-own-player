@@ -122,7 +122,7 @@ export const PlayerPage: FC<IPlayerPageProps> = () => {
                         </>
                     }
                 </div>
-                <p>Try either id from imdb or tmdb</p>
+                <p>Try either id from <a target="_blank" href="https://www.imdb.com/">imdb</a> or <a target="_blank" href="https://www.themoviedb.org">tmdb</a></p>
                 <div className={styles.switches}>
                     {currPlayers.map((v) => (
                         <BaseButton onClick={() => {
