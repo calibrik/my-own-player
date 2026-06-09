@@ -4,7 +4,7 @@
 	--primary: blue;
 	--danger: blue;
 	--transluscent: rgba(0, 0, 255, 0.524);
-	--bg: red;
+	--bg: #860000;
 	--input-bg: black;
 	background-color: var(--bg);
 	color: var(--primary);

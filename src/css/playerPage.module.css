@@ -29,9 +29,11 @@
 .inputs{
     display: flex;
     gap:5px;
-    width:100%;
+    width:60%;
     justify-content: center;
-    width: 60cqw;
+    @container (max-width: 600px){
+        width:100%;
+    }
 }
 
 .input-div.tvShowId{
@@ -74,6 +76,7 @@
     align-items: center;
     justify-content: stretch;
     gap:10px;
+    flex-wrap: wrap;
 }
 
 .switch{
