@@ -169,56 +169,58 @@ export const PlayerPage: FC = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.controls}>
-                {tv && (
-                    <div className={styles.inputs}>
-                        <div className={`${styles.inputDiv} ${styles.season}`}>
-                            <label className={styles.selectLabel} htmlFor="season-select">Season</label>
-                            <select id="season-select" className={styles.select} value={tv.season} onChange={(e) => onSeasonChange(e.target.value)}>
-                                {tv.seasons.map((s) => (
-                                    <option key={s.season_number} value={s.season_number}>{s.season_number}</option>
-                                ))}
-                            </select>
-                        </div>
-                        {tv.episodeCount > 0 && (
-                            <div className={`${styles.inputDiv} ${styles.episode}`}>
-                                <label className={styles.selectLabel} htmlFor="episode-select">Episode</label>
-                                <select id="episode-select" className={styles.select} value={tv.episode} onChange={(e) => onEpisodeChange(e.target.value)}>
-                                    {Array.from({ length: tv.episodeCount }, (_, i) => i + 1).map((n) => (
-                                        <option key={n} value={n}>{n}</option>
-                                    ))}
-                                </select>
+            {!media.id ?
+                <p>Nothing selected yet — find a movie or TV show via the search bar above.</p>:
+                <>
+                    <div className={styles.controls}>
+                        {tv ? (
+                            <div className={styles.inputs}>
+                                <div className={`${styles.inputDiv} ${styles.season}`}>
+                                    <label className={styles.selectLabel} htmlFor="season-select">Season</label>
+                                    <select id="season-select" className={styles.select} value={tv.season} onChange={(e) => onSeasonChange(e.target.value)}>
+                                        {tv.seasons.map((s) => (
+                                            <option key={s.season_number} value={s.season_number}>{s.season_number}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                {tv.episodeCount > 0 && (
+                                    <div className={`${styles.inputDiv} ${styles.episode}`}>
+                                        <label className={styles.selectLabel} htmlFor="episode-select">Episode</label>
+                                        <select id="episode-select" className={styles.select} value={tv.episode} onChange={(e) => onEpisodeChange(e.target.value)}>
+                                            {Array.from({ length: tv.episodeCount }, (_, i) => i + 1).map((n) => (
+                                                <option key={n} value={n}>{n}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        ) : !isMovie?<p>Loading...</p>:""}
+                        {tvError && <p className={styles.error}>{tvError}</p>}
+                        <div className={styles.switches}>
+                            {currPlayers.map((v) => (
+                                <BaseButton key={v} onClick={() => {
+                                    setPlayer(v);
+                                }} className={`${styles.switch} ${player == v ? styles.active : ""}`}>{v}</BaseButton>
+                            ))}
+                        </div>
                     </div>
-                )}
-                {tvError && <p className={styles.error}>{tvError}</p>}
-                <div className={styles.switches}>
-                    {currPlayers.map((v) => (
-                        <BaseButton key={v} onClick={() => {
-                            setPlayer(v);
-                        }} className={`${styles.switch} ${player == v ? styles.active : ""}`}>{v}</BaseButton>
-                    ))}
-                </div>
-            </div>
-            <div className={styles.playerList}>
-                {!media.id ? (
-                    <p>Nothing selected yet — find a movie or TV show via the search bar above.</p>
-                ) : isMovie || tv || tvError ? (
-                    <div className={styles.playerDiv}>
-                        <p className={styles.playerTitle}>{player}</p>
-                        <iframe
-                            className={styles.player}
-                            src={playerSrc(player, media, tv?.season ?? "1", tv?.episode ?? "1")}
-                            width="100%"
-                            height="100%"
-                            allowFullScreen
-                            allow="encrypted-media" />
-                    </div>
-                ) : (
-                    <p>Loading season data...</p>
-                )}
-            </div>
+
+                    {isMovie || tv || tvError ? (
+                        <div className={styles.playerDiv}>
+                            <p className={styles.playerTitle}>{player}</p>
+                            <iframe
+                                className={styles.player}
+                                src={playerSrc(player, media, tv?.season ?? "1", tv?.episode ?? "1")}
+                                width="100%"
+                                height="100%"
+                                allowFullScreen
+                                allow="encrypted-media" />
+                        </div>
+                    ) : (
+                        <p>Loading players...</p>
+                    )}
+                </>
+            }
         </div>
     );
 }

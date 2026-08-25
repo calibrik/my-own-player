@@ -4,7 +4,7 @@
     max-width: 1000px;
     width: 100%;
     align-items: center;
-    margin-top: 5cqw;
+    margin-top: 2vh;
     gap: 20px;
 }
 
@@ -19,9 +19,11 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     width: 100%;
+
     @container (max-width: 750px) {
         grid-template-columns: repeat(3, 1fr);
     }
+
     @container (max-width: 500px) {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -63,6 +65,8 @@
 }
 
 .card-info {
+    min-height: 100px;
+    height: 100%;
     padding: 8px;
     display: flex;
     flex-direction: column;
@@ -72,9 +76,14 @@
 .title {
     font-weight: bold;
     font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .year {
+    margin-top: auto;
     font-size: 0.85rem;
     color: var(--transluscent);
 }
@@ -93,7 +102,7 @@
 }
 
 .badge.tv {
-    background-color: var(--transluscent);
+    background-color: var(--bg);
     color: var(--input-bg);
 }
 

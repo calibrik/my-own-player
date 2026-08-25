@@ -91,6 +91,7 @@ export const SearchPage: FC = () => {
                         : "";
                     return (
                         <Link
+                            title={title}
                             key={`${result.media_type}-${result.id}`}
                             to={`/player?type=${result.media_type}&id=${result.id}`}
                             className={styles.card}>
