@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    align-items: center;
+    margin-top: 5cqw;
+    gap: 20px;
+}
+
+.heading {
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    @container (max-width: 750px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @container (max-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--input-bg);
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: 0 0 7px var(--primary);
+}
+
+.poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.no-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: var(--transluscent);
+    font-size: 0.9rem;
+}
+
+.card-info {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.year {
+    font-size: 0.85rem;
+    color: var(--transluscent);
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.badge.movie {
+    background-color: var(--primary);
+    color: var(--input-bg);
+}
+
+.badge.tv {
+    background-color: var(--transluscent);
+    color: var(--input-bg);
+}
+
+.state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    text-align: center;
+    padding: 40px 0;
+}
+
+.error {
+    color: var(--danger);
+}
+
+.spinner {
+    font-size: 2rem;
+}

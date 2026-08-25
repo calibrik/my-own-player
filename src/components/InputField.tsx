@@ -32,7 +32,7 @@ export const InputField = forwardRef<InputFieldHandle, IInputFieldProps>((props,
     const [type, setType] = useState<string>(props.type);
 
     function onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        let value = event.target.value ?? "";
+        const value = event.target.value ?? "";
         setErrMsg("");
         if (props.onChange) {
             props.onChange(value);

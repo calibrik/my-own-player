@@ -1,9 +1,9 @@
 :root {
 	box-sizing: border-box;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	--primary: blue;
-	--danger: blue;
-	--transluscent: rgba(0, 0, 255, 0.524);
+	--primary: #0088ff;
+	--danger: #ff0000;
+	--transluscent: #0088ff82;
 	--bg: #860000;
 	--input-bg: black;
 	background-color: var(--bg);

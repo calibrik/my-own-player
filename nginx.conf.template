@@ -1,0 +1,30 @@
+server {
+    listen 80;
+    server_name localhost; 
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Proxy TMDB API calls (frontend calls /api/tmdb/...) to avoid browser CORS.
+    # The API key placeholder is substituted at container start by the official
+    # nginx image's envsubst (from the VITE_TMDB_API_KEY container env var), so
+    # the key is injected server-side and never reaches the browser.
+    location /api/tmdb/ {
+        set $args "$args&api_key=${VITE_TMDB_API_KEY}";
+        proxy_pass https://api.themoviedb.org/3/;
+        proxy_ssl_server_name on;
+        proxy_set_header Host api.themoviedb.org;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        root /usr/share/nginx/html;
+        expires 1y;
+        add_header Cache-Control "public, no-transform";
+        log_not_found off;
+    }
+}

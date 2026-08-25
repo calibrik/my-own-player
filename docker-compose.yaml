@@ -1,7 +1,13 @@
 name: custom-player
 services:
   webapp:
-    build: .
+    build:
+      context: .
+    env_file:
+      # Provides VITE_TMDB_API_KEY to the container at runtime; nginx injects it
+      # into its config at container start. The key is never stored in the repo.
+      - path: env_vars.env
+        required: false
     ports:
       - "80:80"
     restart: unless-stopped

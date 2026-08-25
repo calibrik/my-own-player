@@ -5,13 +5,13 @@
     container-type: inline-size;
     width:100%;
     align-items: center;
-    margin-top: 5cqw;
+    margin-top: 2vh;
 }
 
 .controls{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     width: 100%;
     align-items: center;
 }
@@ -19,6 +19,7 @@
 .player{
     width:100%;
     height:500px;
+    border-color: var(--primary);
 }
 
 .input{
@@ -88,4 +89,41 @@
 .switch.active{
     background-color: var(--primary);
     color: var(--input-bg);
+}
+/* TV show season/episode selectors (id field is gone, so give them more room) */
+.input-div.season,
+.input-div.episode {
+    width: 25%;
+}
+
+.select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: var(--primary);
+    background-color: var(--input-bg);
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.select:hover {
+    background-color: color-mix(in srgb, var(--input-bg), white 10%);
+}
+
+.select:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 7px var(--primary);
+}
+
+.select-label {
+    font-size: clamp(0.8rem, 2.5cqw, 1rem);
+    color: var(--primary);
+}
+
+.error {
+    color: var(--danger);
 }
